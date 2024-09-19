@@ -165,11 +165,11 @@ export default function Lab1() {
         <h4>Image tag</h4>
         Loading an image from the internet:
         <br />
-          <img id="wd-palette" width="400px" src="https://i.pinimg.com/originals/e1/e3/d3/e1e3d3588f0bed454eeb2a5d71ea699e.jpg" />
+          <img alt="Palette"id="wd-palette" width="400px" src="https://i.pinimg.com/originals/e1/e3/d3/e1e3d3588f0bed454eeb2a5d71ea699e.jpg" />
         <br />
         Loading a local image:
         <br />
-          <img id="wd-sunrise" src="Images/TestImage.jpg" height="200px" />
+          <img alt="Sunrise" id="wd-sunrise" src="Images/TestImage.jpg" height="200px" />
       </div>
       <div id="wd-forms">
       <h4>Form Elements</h4>

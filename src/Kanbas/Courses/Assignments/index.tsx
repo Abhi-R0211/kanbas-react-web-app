@@ -15,7 +15,9 @@ export default function Assignments() {
     return (
       <div id="wd-assignments" className="container-fluid my-4">
         <div className="d-flex flex-column w-100">
-        <AssignmentControls /><br/><br/>
+        <AssignmentControls />
+        </div>
+        <br/><br/>
         <ul id="wd-assignments" className="list-group rounded-0 module-container w-100" style={{overflowX:'hidden'}}>
           <li className="wd-assignment list-group-item p-0 mb-5 fs-5 border-gray w-100">
             <div className="wd-title p-3 ps-2 bg-light d-flex align-items-center w-100">
@@ -54,7 +56,6 @@ export default function Assignments() {
           </li>
         </ul>
       </div>
-      </div> 
   );}
   
   

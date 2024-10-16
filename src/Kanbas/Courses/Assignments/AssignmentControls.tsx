@@ -1,6 +1,4 @@
 import { FaPlus } from "react-icons/fa";
-import { MdOutlineCancel } from "react-icons/md";
-import GreenCheckmark from "../Modules/GreenCheckmark";
 import { GoPlus } from "react-icons/go";
 import { IoIosSearch } from "react-icons/io";
 
@@ -22,7 +20,7 @@ export default function AssignmentControls(){
                 <input 
                     type="text" 
                     id="wd-search-input" 
-                    className="form-control ps-5 border border-secondary"  // ps-5 adds left padding
+                    className="form-control ps-5 border border-secondary" 
                     placeholder="Search..." 
                     style={{ width: '300px'}}
                 />

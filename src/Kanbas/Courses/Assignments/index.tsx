@@ -61,7 +61,7 @@ export default function Assignments() {
               <div className="flex-grow-1">
                 {/* Link to the assignment editor with cid and aid */}
                 <Link
-                  to={`/courses/${cid}/Assignments/${assignment._id}`}
+                  to={`${assignment._id}`}
                   className="text-decoration-none text-dark"
                 >
                   <span className="fw-bold fs-5">{assignment.title}</span>

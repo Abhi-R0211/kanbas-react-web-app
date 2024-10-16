@@ -1,30 +1,24 @@
-import { FaPlus } from "react-icons/fa";
-import { GoPlus } from "react-icons/go";
-import { IoIosSearch } from "react-icons/io";
+import { FaPlus } from "react-icons/fa6";
 
-export default function AssignmentControls(){
-    return(
-        <div id="wd-modules-controls" className="text-nowrap group-icons">
-        <button id="wd-add-module-btn" className="btn btn-md btn-danger me-1 float-end">
-            <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-            Assignment
-        </button>
-        <button id="wd-view-progress" className="btn btn-md me-1 btn-secondary float-end position-relative me-2" style={{ bottom: "1px" }}>
-            <GoPlus />
-            Group
-        </button>
-        <div className="position-relative" style={{ display: 'inline-block', marginLeft:"15px" }}>
-                <span className="position-absolute" style={{ top: '50%', left: '10px', transform: 'translateY(-50%)' }}>
-                    <IoIosSearch />
-                </span>
-                <input 
-                    type="text" 
-                    id="wd-search-input" 
-                    className="form-control ps-5 border border-secondary" 
-                    placeholder="Search..." 
-                    style={{ width: '300px'}}
-                />
-            </div>
-        </div>
-    );
+export default function AssignmentControls() {
+  return (
+    <div id="wd-modules-controls" className="text-nowrap">
+      <button
+        id="wd-add-module-btn"
+        className="btn btn-md btn-danger me-1 float-end"
+      >
+        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+        Assignment
+      </button>
+      <button
+        id="wd-add-module-btn"
+        className="btn btn-md btn-secondary me-1 float-end"
+      >
+        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+        Group
+      </button>
+
+      
+    </div>
+  );
 }

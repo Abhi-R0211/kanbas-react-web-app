@@ -14,7 +14,7 @@ export default function Kanbas() {
   const [course, setCourse] = useState<any>({
     _id: "0", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15",
-    img: "./images/reactjsCourse.webp", description: "New Description"
+    img: "./Images/reactjs.png", description: "New Description"
   });
   const addNewCourse = () => {
     const newCourse = { ...course,

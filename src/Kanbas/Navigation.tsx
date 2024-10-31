@@ -26,7 +26,7 @@ export default function KanbasNavigation() {
         className="list-group-items list-group-item border-0 text-center d-flex flex-column justify-content-center align-items-center" 
         target="_blank"
       >
-        <img src="/images/logo.svg" width="75px" alt="Northeastern Logo" />
+        <img src="/Images/Logo.png" width="75px" alt="Northeastern Logo" />
         <span>Northeastern</span>
       </NavLink>
 

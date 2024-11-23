@@ -9,7 +9,7 @@ export default function KanbasNavigation() {
   const { pathname } = useLocation();
   const links = [
     { label: "Dashboard", path: "/Kanbas/Dashboard", icon: AiOutlineDashboard },
-    { label: "Courses",   path: "/Kanbas/Dashboard", icon: LiaBookSolid },
+    { label: "Courses",   path: "/Kanbas/Courses", icon: LiaBookSolid },
     { label: "Calendar",  path: "/Kanbas/Calendar",  icon: IoCalendarOutline },
     { label: "Inbox",     path: "/Kanbas/Inbox",     icon: FaInbox },
     { label: "Labs",      path: "/Labs",             icon: LiaCogSolid },
@@ -26,7 +26,7 @@ export default function KanbasNavigation() {
         className="list-group-items list-group-item border-0 text-center d-flex flex-column justify-content-center align-items-center" 
         target="_blank"
       >
-        <img src="/Images/Logo.png" width="75px" alt="Northeastern Logo" />
+        <img src="/images/logo.svg" width="75px" alt="Northeastern Logo" />
         <span>Northeastern</span>
       </NavLink>
 

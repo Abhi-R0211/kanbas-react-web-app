@@ -1,6 +1,6 @@
 // src/Kanbas/Account/enrollmentsReducer.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import * as db from "../Database";
+import * as db from "../Databases";
 
 interface Enrollment {
   _id: string;

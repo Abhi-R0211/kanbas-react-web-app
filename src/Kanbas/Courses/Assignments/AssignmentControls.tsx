@@ -7,14 +7,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function AssignmentControls({ cid }:any) {
-   
     const { currentUser } = useSelector((state: any) => state.accountReducer);
-    
+    console.log(currentUser);
     const isFaculty = currentUser?.role === "FACULTY";
     return (
       <div id="wd-modules-controls" className="text-nowrap">
         <div className="d-flex justify-content-between align-items-center my-3">
-        
+        <div className="input-group" style={{ width: "300px" }}>
+          <span className="input-group-text" id="basic-addon1">
+            <FaSearch />
+          </span>
+          <input
+            id="wd-search-assignment"
+            type="text"
+            className="form-control"
+            placeholder="Search for Assignments"
+          />
+        </div>
         {isFaculty && (
           <div className="ms-auto">
           <Link

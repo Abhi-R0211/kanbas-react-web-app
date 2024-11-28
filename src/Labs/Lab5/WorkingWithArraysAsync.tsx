@@ -9,7 +9,6 @@ export default function WorkingWithArraysAsynchronously() {
   const [errorMessage, setErrorMessage] = useState(null);
   const fetchTodos = async () => {
     const todos = await client.fetchTodos();
-    //console.log(todos);
     setTodos(todos);
   };
   useEffect(() => {

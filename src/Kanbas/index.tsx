@@ -19,9 +19,7 @@ export default function Kanbas() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const fetchCourses = async () => {
     try {
-      console.log("Kanbas-index");
       const courses = await userClient.findMyCourses(currentUser);
-      console.log(courses);
       setCourses(courses);
     } catch (error) {
       console.error(error);
@@ -29,11 +27,12 @@ export default function Kanbas() {
   };
   useEffect(() => {
     fetchCourses();
-  }, [currentUser]);
+  }, []);
  
   const [course, setCourse] = useState<any>({
     _id: "1234", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
+    startDate: "2023-09-10", endDate: "2023-12-15", img: "/images/reactjs.png", description: "New Description",
+    
   });
 
   const fetchAllCourses=async()=>{
@@ -51,17 +50,41 @@ export default function Kanbas() {
   const addNewCourse = async() => {
     const { _id, ...courseData } = course;
     const newCourse = await userClient.createCourse(courseData);
-    setCourses([...courses, newCourse]);
+    setAllCourses([...allCourses, newCourse]);
   };
 
-  const deleteCourse = async(courseId: any) => {
-    const status = await courseClient.deleteCourse(courseId);
-    console.log(status);
-    setCourses(status);
+  const deleteCourse = async (courseId: string) => {
+    try {
+      const status = await courseClient.deleteCourse(courseId);
+  
+      if (status.success) {
+        setAllCourses((prevCourses) => {
+          const updatedCourses = prevCourses.filter((course) => course._id !== courseId);
+          return updatedCourses;
+        });
+        setCourses((prevCourses) => {
+          const updatedEnrolledCourses = prevCourses.filter((course) => course._id !== courseId);
+          return updatedEnrolledCourses;
+        });
+      } else {
+        console.error("Failed to delete course:", status.message);
+      }
+    } catch (error) {
+      console.error("Error deleting course:", error);
+    }
   };
 
   const updateCourse = async () => {
     await courseClient.updateCourse(course);
+    setAllCourses(
+      allCourses.map((c) => {
+        if (c._id === course._id) {
+          return course;
+        } else {
+          return c;
+        }
+      })
+    );
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {

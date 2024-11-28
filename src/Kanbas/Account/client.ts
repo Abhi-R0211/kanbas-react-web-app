@@ -7,15 +7,11 @@ export const ENROLLMENTS_API = `${REMOTE_SERVER}/api/enrollments`;
 
 export const signin = async (credentials: any) => {
   const response = await axiosWithCredentials.post(`${USERS_API}/signin`, credentials);
-  console.log("Signin");
-  console.log(response.data);
   return response.data;
 };
 
 export const signup = async (user: any) => {
   const response = await axiosWithCredentials.post(`${USERS_API}/signup`, user);
-  console.log("Signup");
-  console.log(response.data);
   return response.data;
 };
 
@@ -25,10 +21,7 @@ export const updateUser = async (user: any) => {
 };
 
 export const profile = async () => {
-  console.log("profile in client");
   const response = await axiosWithCredentials.post(`${USERS_API}/profile`);
-  console.log("profile in client");
-  console.log(response.data);
   return response.data;
 };
 
@@ -53,7 +46,6 @@ export const createCourse = async (course: any) => {
 };
 
 export const enrollUser = async (data: { courseId: string; userId: string }) => {
-  console.log("Payload sent to enrollUser:", data); // Debugging
   const response = await axios.post(`${ENROLLMENTS_API}`, data);
   return response.data;
 };

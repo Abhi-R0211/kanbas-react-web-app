@@ -6,7 +6,6 @@ import Courses from "./Courses";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import ProtectedRoute from "./Account/ProtectedRoute";
-import ProtectedRouteDashboard from "./ProtectedRouteDashboard";
 import Session from "./Account/Session";
 import * as userClient from "./Account/client";
 import { useSelector } from "react-redux";
@@ -16,18 +15,28 @@ import * as courseClient from "./Courses/client";
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>([]);
   const [allCourses, setAllCourses] = useState<any[]>([]);
+  const [enrolledCourses, setEnrolledCourses] = useState<any[]>([]);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const fetchCourses = async () => {
+  const fetchEnrolledCourses = async () => {
     try {
       const courses = await userClient.findMyCourses(currentUser);
-      setCourses(courses);
+      setEnrolledCourses(courses);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching enrolled courses:", error);
     }
   };
+
   useEffect(() => {
-    fetchCourses();
-  }, []);
+    if (currentUser) {
+      fetchAllCourses();
+      fetchEnrolledCourses();
+    } else {
+      setAllCourses([]); // Clear all courses if no user is logged in
+      setEnrolledCourses([]); // Clear enrolled courses
+    }
+  }, [currentUser]);
+
+
  
   const [course, setCourse] = useState<any>({
     _id: "1234", name: "New Course", number: "New Number",
@@ -51,6 +60,7 @@ export default function Kanbas() {
     const { _id, ...courseData } = course;
     const newCourse = await userClient.createCourse(courseData);
     setAllCourses([...allCourses, newCourse]);
+    await fetchEnrolledCourses();
   };
 
   const deleteCourse = async (courseId: string) => {
@@ -66,6 +76,7 @@ export default function Kanbas() {
           const updatedEnrolledCourses = prevCourses.filter((course) => course._id !== courseId);
           return updatedEnrolledCourses;
         });
+        setEnrolledCourses((prevEnrolled) => prevEnrolled.filter((c) => c._id !== courseId));
       } else {
         console.error("Failed to delete course:", status.message);
       }
@@ -94,6 +105,8 @@ export default function Kanbas() {
         }
       })
     );
+    const updatedEnrolledCourses = await userClient.findMyCourses(currentUser);
+      setEnrolledCourses(updatedEnrolledCourses);
   };
   
     return (
@@ -106,15 +119,14 @@ export default function Kanbas() {
                   <Route path="/Account/*" element={<Account />} />
                   <Route path="/Dashboard" element={<ProtectedRoute>
                                   <Dashboard
-                                      courses={courses}
                                       course={course}
                                       allCourses={allCourses}
+                                      enrolledCourses={enrolledCourses} 
                                       setCourse={setCourse}
                                       addNewCourse={addNewCourse}
                                       deleteCourse={deleteCourse}
                                       updateCourse={updateCourse}
-                                  />
-                          
+                                      setEnrolledCourses={setEnrolledCourses} />
                           </ProtectedRoute>} />
                   <Route path="/Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses} /></ProtectedRoute>} />
                   <Route path="/Calendar" element={<h1>Calendar</h1>} />

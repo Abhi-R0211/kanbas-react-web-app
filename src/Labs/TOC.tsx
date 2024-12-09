@@ -14,7 +14,7 @@ export default function TOC() {
         </a>
       </li>
       <li className="nav-item">
-        <a id="wd-k" href="https://kanbas-node-server-app-m012.onrender.com" className="nav-link">
+        <a id="wd-k" href="https://kanbas-node-server-app-mongo-8mjw.onrender.com/" className="nav-link">
           Server Deploy Link
         </a>
       </li>
